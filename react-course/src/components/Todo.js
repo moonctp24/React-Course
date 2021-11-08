@@ -13,6 +13,11 @@ function Todo(props){ // props를 통해 함수의 인수처럼 데이터를 받
         setModalIsOpen(true);
     }
 
+    // 배경(backdrop)을 클릭하면 modal이 닫히게 되는 함수
+    function closeModalHandler() {
+      setModalIsOpen(false);
+    }
+
     // 반드시 랜더링할 수 있는 것을 return
     return(
         <div className='card'>
@@ -21,7 +26,7 @@ function Todo(props){ // props를 통해 함수의 인수처럼 데이터를 받
           <button className='btn' onClick={deleteHandler}>Delete</button>
         </div>
         {modalIsOpen ? <Modal /> : null}
-        {modalIsOpen ? <Backdrop /> : null}
+        {modalIsOpen ? <Backdrop onCancel={closeModalHandler}/> : null}
       </div>
     )
 }
