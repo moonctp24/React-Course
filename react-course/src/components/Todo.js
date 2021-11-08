@@ -25,7 +25,7 @@ function Todo(props){ // props를 통해 함수의 인수처럼 데이터를 받
         <div className='actions'>
           <button className='btn' onClick={deleteHandler}>Delete</button>
         </div>
-        {modalIsOpen ? <Modal /> : null}
+        {modalIsOpen ? <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler}/> : null}
         {modalIsOpen ? <Backdrop onCancel={closeModalHandler}/> : null}
       </div>
     )
