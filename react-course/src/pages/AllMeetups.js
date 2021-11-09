@@ -1,4 +1,5 @@
 // 우리가 가진 모든 meetup을 로드하고 출력하는 컴포넌트
+import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_DATA = [
     {
@@ -25,9 +26,7 @@ function AllMeetupsPage() {
     return <section>
         <h1>All Meetups</h1>
         <ul>
-            {DUMMY_DATA.map((meetup) => {
-                return <li key={meetup.id}>{meetup.title}</li>
-            })}
+            <MeetupList meetups={DUMMY_DATA} />
         </ul>
     </section>
 }
