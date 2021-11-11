@@ -3,7 +3,7 @@ import {useRef} from 'react'; // use ref hook
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
 
-function NewMeetupForm() {
+function NewMeetupForm(props) {
     // ref객제 생성하여 const 상수에 저장
     const titleInputRef=useRef();
     const imageInputRef=useRef();
@@ -26,7 +26,7 @@ function NewMeetupForm() {
             description: enteredDescription,
         };
 
-        console.log(meetupData);
+        props.onAddMeetup(meetupData);
     }
     return (
         <Card>
@@ -47,7 +47,7 @@ function NewMeetupForm() {
                     <label htmlFor='description'>Description</label>
                     <textarea id='description' required rows='5' ref={descriptionInputRef}></textarea>
                 </div>
-                <div className={classes.action}>
+                <div className={classes.actions}>
                     <button>Add Meetup</button>
                 </div>
             </form>
