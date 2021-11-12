@@ -4,11 +4,13 @@ import {BrowserRouter} from 'react-router-dom'; // 브라우저가 컴포넌트�
 
 import './index.css';
 import App from './App';
+import {FavoritesContextProvider} from './store/favorites-context';
 
 ReactDOM.render(
-    // non-standard 컴포넌트, non-HTML 컴포넌트를 wrap
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>, 
+    <FavoritesContextProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </FavoritesContextProvider>,
     document.getElementById('root')
 );

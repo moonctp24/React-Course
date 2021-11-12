@@ -3,10 +3,15 @@ import { createContext, useState } from "react";
 const FavoritesContext = createContext({
     // 초기 상태
     favorites: [],
-    totalFavorites: 0
+    totalFavorites: 0,
+    // 상태 변화
+    addFavorite: (favoriteMeetup) => {},
+    removeFavorite: (meetupId) => {},
+    itemIsFavorite: (meetupId) => {}
 });
 // 초기 상태에서 즐겨찾기 추가 및 제거에 따른 값 변화 컴포넌트 추가
-function FavoritesContextProvider(props) {
+// 함수 따로 export
+export function FavoritesContextProvider(props) {
     const [userFavorites, setUserFavorites] = useState([]);
 
     function addFavoriteHandler(favoriteMeetup) {
@@ -28,7 +33,10 @@ function FavoritesContextProvider(props) {
 
     const context = {
         favorites: userFavorites,
-        totalFavorites: userFavorites.length
+        totalFavorites: userFavorites.length,
+        addFavorite: addFavoriteHandler,
+        removeFavorite: removeFavoriteHandler,
+        itemIsFavorite: itemIsFavoriteHandler
     };
 
     // 자동으로 랩핑
@@ -36,3 +44,5 @@ function FavoritesContextProvider(props) {
         {props.children}
     </FavoritesContext.Provider>
 }
+
+export default FavoritesContext; // context를 기본값으로 export
